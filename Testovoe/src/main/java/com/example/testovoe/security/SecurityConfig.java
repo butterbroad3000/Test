@@ -20,6 +20,7 @@ public class SecurityConfig {
     http
       .authorizeHttpRequests(authorizeRequests ->
         authorizeRequests
+          .requestMatchers(HttpMethod.GET, "/swagger-ui/**", "/v3/api-docs/**", "/swagger-resources/**", "/webjars/**","/swagger-ui.html").permitAll()
           .requestMatchers(HttpMethod.GET, "/patient/**").hasAnyAuthority("ROLE_practitioner", "ROLE_patient")
           .requestMatchers(HttpMethod.POST, "/patient/create").hasAuthority("ROLE_practitioner")
           .requestMatchers(HttpMethod.PUT, "/patient/**").hasAuthority("ROLE_practitioner")
@@ -41,7 +42,7 @@ public class SecurityConfig {
         List<String> roles = (List<String>) realmAccess.get("roles");
         if (roles != null) {
           roles.forEach(role ->
-            authorities.add(new SimpleGrantedAuthority("ROLE_" + role)) // Добавляем префикс ROLE_
+            authorities.add(new SimpleGrantedAuthority("ROLE_" + role))
           );
         }
       }
