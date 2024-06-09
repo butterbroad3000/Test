@@ -22,3 +22,14 @@ spring:
 
 server:
   port: 8089
+keycloak:
+  credentials:
+    secret: cFLqsvUtgdZ35gl7ao2yhmS1rtJBVdqF
+  resource: my-client
+  auth-server-url: http://localhost:8080
+  realm: TestRealm
+  username: practitioner
+  password: 200378
+
+app:
+  url: http://localhost:8089
