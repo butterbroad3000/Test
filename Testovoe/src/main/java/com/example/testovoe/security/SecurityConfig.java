@@ -21,7 +21,7 @@ public class SecurityConfig {
       .authorizeHttpRequests(authorizeRequests ->
         authorizeRequests
           .requestMatchers(HttpMethod.GET, "/patient/**").hasAnyAuthority("ROLE_practitioner", "ROLE_patient")
-          .requestMatchers(HttpMethod.POST, "/patient").hasAuthority("ROLE_practitioner")
+          .requestMatchers(HttpMethod.POST, "/patient/create").hasAuthority("ROLE_practitioner")
           .requestMatchers(HttpMethod.PUT, "/patient/**").hasAuthority("ROLE_practitioner")
           .requestMatchers(HttpMethod.DELETE, "/patient/**").hasAuthority("ROLE_practitioner")
           .anyRequest().authenticated()
